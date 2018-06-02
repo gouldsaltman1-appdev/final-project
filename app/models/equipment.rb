@@ -13,7 +13,9 @@
 #
 
 class Equipment < ApplicationRecord
-    belongs_to :owner, :class_name => "User"
+    #--belongs_to :owner, :foreign_key => "user_id"  #--  change "class_name=> "User" to "foreign_key=> "user_id" because I kept getting the error "Owner must exist" when I tried to create new equipment
+    
+    belongs_to :owner, :foreign_key => "user.id"
     has_many :loans
     belongs_to :category, :foreign_key => "categories_id"
     

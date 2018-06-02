@@ -21,7 +21,7 @@ class EquipmentController < ApplicationController
     @equipment.title = params.fetch("title")
     @equipment.description = params.fetch("description")
     @equipment.image = params.fetch("image")
-    @equipment.owner_id = params.fetch("owner_id")
+   # @equipment.owner_id = params.fetch("owner_id")
     @equipment.categories_id = params.fetch("categories_id")
 
     if @equipment.valid?
