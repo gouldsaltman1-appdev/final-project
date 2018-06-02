@@ -1,0 +1,101 @@
+<!-- Validation failure messages -->
+<% if @loan.present? %>
+  <% if @loan.errors.any? %>
+    <% @loan.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Search for Equipment
+</h1>
+
+<hr>
+
+<form action="/create_loan" method="post">
+  <!-- Label and input for equipment_id -->
+  <div class="form-group">
+    <label for="equipment_id">
+      What sport are you trying to play?
+    </label>
+
+   <%= select_tag("categories_id", options_from_collection_for_select(Category.all, :id, :name, @loan.try(:categories_id)), :class => "form-control") %>
+  </div>
+
+ <div class="form-group">
+    <label for="equipment_id">
+      What kind of equipment are you looking for?
+    </label>
+
+    <input type="text" id="equipment_id" name="equipment_id" class="form-control" value="<%= @loan.try(:equipment_id) %>">
+  </div>
+  
+  <!-- Label and input for borrower_id -->
+
+    <input type="hidden" id="borrower_id" name="borrower_id" class="form-control" value="<%= current_user %>">
+
+
+  <!-- Label and input for owner_id -->
+  <div class="form-group">
+    <label for="distance">
+      How far are you willing to travel for this equipment?
+    </label>
+    <select id="user_id" name="user_id">
+  <option value="1">0.1 Miles</option>
+  <option value="2">0.2 Miles</option>
+  <option value="3">0.3 Miles</option>
+  <option value="4">0.4 Miles</option>
+  <option value="5">0.5 Miles</option>
+  <option value="6">0.75 Miles</option>
+  <option value="6">1 Mile</option>
+  <option value="5">2 Miles</option>
+  <option value="6">5 Miles</option>
+  <option value="6">10 Miles</option>
+</select>
+     </div>
+
+
+  <!-- Label and input for address -->
+  <div class="form-group">
+    <label for="address">
+      from
+    </label>
+<%= select_tag("address", options_from_collection_for_select(User.all, :id, :address, @loan.try(:address)), :class => "form-control") %>
+or   <textarea id="description" name="description" placeholder= "Add a new address first" class="form-control" rows="3"></textarea>
+  </div>
+
+
+  <!-- Label and input for start_time -->
+  <div class="form-group">
+    <label for="start_time">
+     When do you want to pick up this equipment?
+    </label>
+
+    <input type="text" id="start_time" name="start_time" class="form-control" value="<%= @loan.try(:start_time) %>">
+  </div>
+
+  <!-- Label and input for end_time -->
+  <div class="form-group">
+    <label for="end_time">
+     When will you return this equipment?
+    </label>
+
+    <input type="text" id="end_time" name="end_time" class="form-control" value="<%= @loan.try(:end_time) %>">
+  </div>
+
+  <!-- Label and input for pickupdropoff_location -->
+
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create loan
+  </button>
+</form>
+
+<hr>
+
+<a href="/loans">
+  Go back
+</a>

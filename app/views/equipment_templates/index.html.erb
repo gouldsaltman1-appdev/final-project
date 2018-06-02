@@ -1,0 +1,91 @@
+<h1>
+  All equipment
+</h1>
+
+<a href="/equipment/new">
+  Add a new equipment
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Title
+    </th>
+
+    <th>
+      Description
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Owner
+    </th>
+
+    <th>
+      Sport
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @equipment.each do |equipment| %>
+  <tr>
+    <td>
+      <%= equipment.id %>
+    </td>
+
+    <td>
+      <%= equipment.title %>
+    </td>
+
+    <td>
+      <%= equipment.description %>
+    </td>
+
+    <td>
+      <%= equipment.image %>
+    </td>
+
+    <td>
+     Placeholder
+     <!-- <%= equipment.owner_id %> -->
+    </td>
+
+    <td>
+      <%= equipment.categories_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(equipment.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(equipment.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/equipment/<%= equipment.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

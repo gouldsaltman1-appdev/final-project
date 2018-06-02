@@ -1,0 +1,98 @@
+<h5>
+  All loans
+</h5>
+
+<a href="/loans/new">
+  Search for Equipment
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Equipment
+    </th>
+
+    <th>
+      Borrower
+    </th>
+
+    <th>
+      Owner
+    </th>
+
+    <th>
+      Start time
+    </th>
+
+    <th>
+      End time
+    </th>
+
+    <th>
+      Pickupdropoff location
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @loans.each do |loan| %>
+  <tr>
+    <td>
+      <%= loan.id %>
+    </td>
+
+    <td>
+      <%= loan.equipment_id %>
+    </td>
+
+    <td>
+      <%= loan.borrower_id %>
+    </td>
+
+    <td>
+      <%= loan.owner_id %>
+    </td>
+
+    <td>
+      <%= loan.start_time %>
+    </td>
+
+    <td>
+      <%= loan.end_time %>
+    </td>
+
+    <td>
+      <%= loan.pickupdropoff_location %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(loan.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(loan.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/loans/<%= loan.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

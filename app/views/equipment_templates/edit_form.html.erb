@@ -1,0 +1,71 @@
+<!-- Validation failure messages -->
+<% if @equipment.errors.any? %>
+  <% @equipment.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit equipment #<%= @equipment.id %>
+</h1>
+
+<hr>
+
+<form action="/update_equipment/<%= @equipment.id %>" method="post">
+  <!-- Label and input for title -->
+  <div class="form-group">
+    <label for="title">
+      Title
+    </label>
+
+    <input type="text" id="title" name="title" class="form-control" value="<%= @equipment.title %>">
+  </div>
+
+  <!-- Label and input for description -->
+  <div class="form-group">
+    <label for="description">
+      Description
+    </label>
+
+    <input type="text" id="description" name="description" class="form-control" value="<%= @equipment.description %>">
+  </div>
+
+  <!-- Label and input for image -->
+  <div class="form-group">
+    <label for="image">
+      Image
+    </label>
+
+    <input type="text" id="image" name="image" class="form-control" value="<%= @equipment.image %>">
+  </div>
+
+  <!-- Label and input for owner_id -->
+  <div class="form-group">
+    <label for="owner_id">
+      Owner
+    </label>
+
+    <input type="text" id="owner_id" name="owner_id" class="form-control" value="<%= @equipment.owner_id %>">
+  </div>
+
+  <!-- Label and input for categories_id -->
+  <div class="form-group">
+    <label for="categories_id">
+      Sport
+    </label>
+
+    <input type="text" id="categories_id" name="categories_id" class="form-control" value="<%= @equipment.categories_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update equipment
+  </button>
+</form>
+
+<hr>
+
+<a href="/equipment">
+  Go back
+</a>

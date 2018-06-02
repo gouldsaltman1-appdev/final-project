@@ -1,0 +1,70 @@
+<!-- Validation failure messages -->
+<% if @equipment.present? %>
+  <% if @equipment.errors.any? %>
+    <% @equipment.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new equipment
+</h1>
+
+<hr>
+
+<form action="/create_equipment" method="post">
+  <!-- Label and input for title -->
+  <div class="form-group">
+    <label for="title">
+      Equipment Name
+    </label>
+
+    <input type="text" id="title" name="title" class="form-control" value="<%= @equipment.try(:title) %>" placeholder="Model #, Year, etc.">
+  </div>
+
+  <!-- Label and input for description -->
+  <div class="form-group">
+    <label for="description">
+     Equipment Description
+    </label>
+
+    <input type="text" id="description" name="description" class="form-control" value="<%= @equipment.try(:description) %>" placeholder="Write a nice, detailed description. People love it.">
+  </div>
+
+  <!-- Label and input for image -->
+  <div class="form-group">
+    <label for="image">
+      Image URL
+    </label>
+
+    <input type="text" id="image" name="image" class="form-control" value="<%= @equipment.try(:image) %>">
+  </div>
+
+  <!-- Label and input for owner_id -->
+<div>
+  
+  <input type="hidden" id="owner_id" name="owner_id" class="form-control" value="1" >                      
+    </div>
+
+  <!-- Label and input for categories_id -->
+  <div class="form-group">
+    <label for="categories_id">
+      Category
+    </label>
+
+   <%= select_tag("categories_id", options_from_collection_for_select(Category.all, :id, :name, @equipment.try(:categories_id)), :class => "form-control") %>
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create equipment
+  </button>
+</form>
+
+<hr>
+
+<a href="/equipment">
+  Go back
+</a>

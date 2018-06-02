@@ -1,0 +1,80 @@
+<!-- Validation failure messages -->
+<% if @loan.errors.any? %>
+  <% @loan.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit loan #<%= @loan.id %>
+</h1>
+
+<hr>
+
+<form action="/update_loan/<%= @loan.id %>" method="post">
+  <!-- Label and input for equipment_id -->
+  <div class="form-group">
+    <label for="equipment_id">
+      Equipment
+    </label>
+
+    <input type="text" id="equipment_id" name="equipment_id" class="form-control" value="<%= @loan.equipment_id %>">
+  </div>
+
+  <!-- Label and input for borrower_id -->
+  <div class="form-group">
+    <label for="borrower_id">
+      Borrower
+    </label>
+
+    <input type="text" id="borrower_id" name="borrower_id" class="form-control" value="<%= @loan.borrower_id %>">
+  </div>
+
+  <!-- Label and input for owner_id -->
+  <div class="form-group">
+    <label for="owner_id">
+      Owner
+    </label>
+
+    <input type="text" id="owner_id" name="owner_id" class="form-control" value="<%= @loan.owner_id %>">
+  </div>
+
+  <!-- Label and input for start_time -->
+  <div class="form-group">
+    <label for="start_time">
+      Start time
+    </label>
+
+    <input type="text" id="start_time" name="start_time" class="form-control" value="<%= @loan.start_time %>">
+  </div>
+
+  <!-- Label and input for end_time -->
+  <div class="form-group">
+    <label for="end_time">
+      End time
+    </label>
+
+    <input type="text" id="end_time" name="end_time" class="form-control" value="<%= @loan.end_time %>">
+  </div>
+
+  <!-- Label and input for pickupdropoff_location -->
+  <div class="form-group">
+    <label for="pickupdropoff_location">
+      Pickupdropoff location
+    </label>
+
+    <input type="text" id="pickupdropoff_location" name="pickupdropoff_location" class="form-control" value="<%= @loan.pickupdropoff_location %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update loan
+  </button>
+</form>
+
+<hr>
+
+<a href="/loans">
+  Go back
+</a>

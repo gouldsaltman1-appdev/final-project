@@ -27,6 +27,10 @@
 
   <body>
     <%= yield %>
+ <%= render "shared/navbar" %>
+
+  <div class="container">
+    <%= render "shared/flashes" %>
 
     <%= dev_tools if Rails.env.development? %>
   </body>

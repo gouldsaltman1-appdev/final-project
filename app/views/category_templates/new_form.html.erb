@@ -1,0 +1,22 @@
+<h3><div class="col-md-8 offset-md-2">
+  <a href="/photos/new" class="btn btn-primary btn-block">
+    <i class="fa fa-fw fa-plus"></i>
+  Add a new sport
+</a>
+</h3>
+
+<form action="/create_category" method="post">
+
+  <!-- Label and input for name -->
+  <div class="form-group">
+    <label for="name">
+      Sport Name
+    </label>
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @category.try(:name) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create category
+  </button>
+</form>

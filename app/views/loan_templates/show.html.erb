@@ -1,0 +1,77 @@
+<h1>
+  Loan #<%= @loan.id %> details
+</h1>
+
+<a href="/loans/<%= @loan.id %>/edit">
+  Edit loan
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Equipment
+  </dt>
+  <dd>
+    <%= @loan.equipment_id %>
+  </dd>
+
+  <dt>
+    Borrower
+  </dt>
+  <dd>
+    <%= @loan.borrower_id %>
+  </dd>
+
+  <dt>
+    Owner
+  </dt>
+  <dd>
+    <%= @loan.owner_id %>
+  </dd>
+
+  <dt>
+    Start time
+  </dt>
+  <dd>
+    <%= @loan.start_time %>
+  </dd>
+
+  <dt>
+    End time
+  </dt>
+  <dd>
+    <%= @loan.end_time %>
+  </dd>
+
+  <dt>
+    Pickupdropoff location
+  </dt>
+  <dd>
+    <%= @loan.pickupdropoff_location %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@loan.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@loan.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_loan/<%= @loan.id %>">
+  Delete loan
+</a>
+
+<hr>
+
+<a href="/loans">
+  Go back
+</a>
